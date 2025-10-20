@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waqas Khan | Computational Geneticist vCard</title>
+    <!-- Load Tailwind CSS for utility fallback -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons (Replacing IonIcons) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Font Link (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- 1. CONFIGURATION AND BASE STYLES --- */
+        :root {
+            --primary-color: #f6904d; /* Your requested orange */
+            --bg-color: #f0f2f5; 
+            --box-shadow: 0 16px 30px hsla(0, 0%, 0%, 0.1);
+            --border-radius: 20px;
+            --white: hsl(0, 0%, 100%);
+            --jet: hsl(0, 0%, 18%);
+            --raisin-black-1: hsl(240, 2%, 12%);
+            --gainsboro: hsl(0, 0%, 80%);
+            --sm-vp: 576px;
+            --md-vp: 768px;
+            --lg-vp: 1024px;
+        }
+
+        /* Base Body and Typography */
+        body {
+            background-color: var(--bg-color);
+            /* --- FONT CHANGE APPLIED HERE --- */
+            font-family: 'Poppins', sans-serif;
+            /* ---------------------------------- */
+            color: var(--jet);
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5 { font-weight: 600; line-height: 1.3; }
+        .h2 { font-size: 1.5rem; } /* Simplified based on common usage */
+        .h3 { font-size: 1.25rem; }
+        .h4 { font-size: 1.125rem; }
+
+        /* Main Container */
+        main {
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* --- 2. VCARD LAYOUT STYLES --- */
+
+        .vcard-wrapper {
+            display: flex;
+            flex-direction: column;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        /* Sidebar (Left Panel) */
+        .sidebar {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        .sidebar-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .avatar-box {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--white);
+            margin-bottom: 15px;
+            background-color: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+        .info-content .name { font-size: 1.75rem; margin-bottom: 5px; }
+        .info-content .title { 
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 14px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        /* Mobile Toggle Button (Hidden on desktop) */
+        .info_more-btn {
+            background: var(--white);
+            color: var(--primary-color);
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 8px 20px;
+            border-radius: 20px;
+            transition: 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            width: 100%;
+            margin-top: 15px;
+        }
+        .info_more-btn:hover { background-color: var(--gainsboro); }
+
+        .sidebar-info_more {
+            display: none; /* Controlled by JS/media queries */
+            padding-top: 20px;
+        }
+        .separator {
+            width: 100%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 20px 0;
+        }
+
+        .contacts-list, .social-list { text-align: left; }
+        .contact-item { 
+            display: flex; 
+            align-items: center; 
+            margin-bottom: 15px;
+            gap: 15px;
+        }
+        .contact-info { margin-left: 0; }
+        .contact-info .contact-title { 
+            font-size: 0.85rem; 
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .contact-info .contact-link, .contact-info span {
+            font-size: 0.95rem;
+            transition: 0.25s ease;
+        }
+        .contact-info .contact-link:hover { text-decoration: underline; }
+        
+        .social-list { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
+        .social-link {
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.25s ease;
+        }
+        .social-link:hover { background-color: var(--white); color: var(--primary-color); }
+        .social-link svg { width: 18px; height: 18px; }
+
+        /* Main Content (Right Panel) */
+        .main-content {
+            padding: 30px 20px;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: var(--white);
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+        }
+        .navbar-list {
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            border-bottom: 1px solid var(--gainsboro);
+        }
+        .navbar-link {
+            color: var(--jet);
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 12px 10px;
+            transition: 0.25s ease;
+            border-bottom: 3px solid transparent;
+            display: block;
+        }
+        .navbar-link:hover { color: var(--primary-color); }
+        .navbar-link.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        /* Article Content Styles */
+        .article-title { margin-bottom: 25px; font-size: 2rem; }
+        article {
+            display: none;
+            padding-top: 20px;
+        }
+        article.active { display: block; }
+        
+        /* Timeline and List Styles */
+        .timeline { margin-bottom: 30px; }
+        .timeline .title-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .timeline .title-wrapper .icon-box {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .timeline .title-wrapper .icon-box svg { color: var(--white); width: 20px; height: 20px; }
+        .timeline-list { border-left: 2px solid var(--gainsboro); padding-left: 15px; }
+        .timeline-item { position: relative; padding-left: 20px; margin-bottom: 20px; }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: -11px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 3px solid var(--white);
+        }
+        .timeline-item span { color: var(--primary-color); font-size: 0.9rem; font-weight: 500; display: block; margin-bottom: 5px; }
+        .timeline-item-title { margin-bottom: 5px; font-size: 1.125rem; }
+        .timeline-text { color: hsl(0, 0%, 50%); font-size: 0.9rem; }
+
+        /* Project/Skill Card Styles */
+        .content-card { padding: 20px; border-radius: 15px; border: 1px solid var(--gainsboro); }
+        .project-item { margin-bottom: 20px; }
+        .project-item a { display: block; padding: 15px; border-radius: 10px; border: 1px solid var(--gainsboro); transition: 0.25s ease; }
+        .project-item a:hover { box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); }
+        .project-title { font-size: 1.1rem; margin-top: 10px; color: var(--jet); }
+        .project-category { font-size: 0.85rem; color: var(--primary-color); font-weight: 500; }
+        .project-img { overflow: hidden; border-radius: 5px; }
+        .project-img img { width: 100%; height: auto; transition: transform 0.5s ease; }
+        .project-item a:hover .project-img img { transform: scale(1.05); }
+
+        /* Utility Section Specifics */
+        .utility-box {
+             background: hsl(0, 0%, 97%);
+             padding: 25px;
+             border-radius: 15px;
+             box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .utility-box input, .utility-box button { height: 50px; }
+        .utility-box input:focus { border-color: var(--primary-color); }
+        .utility-result { 
+            background: var(--white); 
+            border: 1px solid var(--gainsboro); 
+            min-height: 100px;
+            padding: 15px;
+        }
+
+        /* --- 3. RESPONSIVENESS (MEDIA QUERIES) --- */
+
+        /* Tablet/Small Desktop */
+        @media (min-width: var(--sm-vp)) {
+            .navbar-list { justify-content: center; gap: 20px; }
+        }
+
+        /* Desktop */
+        @media (min-width: var(--lg-vp)) {
+            main { padding: 30px; }
+            .vcard-wrapper { flex-direction: row; align-items: stretch; }
+            .sidebar { 
+                min-width: 320px; 
+                max-width: 320px; 
+                padding: 40px;
+                border-radius: var(--border-radius) 0 0 var(--border-radius);
+            }
+            .sidebar-info { padding-bottom: 20px; }
+            .sidebar-info_more { display: block !important; padding-top: 0; }
+            .info_more-btn { display: none; }
+            
+            .main-content {
+                flex-grow: 1;
+                padding: 30px 40px;
+            }
+            .navbar { border-radius: 0 var(--border-radius) 0 0; }
+            .navbar-list { justify-content: flex-start; gap: 40px; }
+        }
+    </style>
+</head>
+<body class="bg-page-bg">
+
+    <!--
+      - #MAIN
+    -->
+    <main>
+        <div class="vcard-wrapper">
+
+            <!--
+              - #SIDEBAR
+            -->
+            <aside class="sidebar" data-sidebar>
+                <div class="sidebar-info">
+                    <figure class="avatar-box">
+                         <!-- Placeholder for Waqas Khan's Photo -->
+                         <i data-lucide="user-square" class="w-10 h-10 text-white"></i>
+                    </figure>
+
+                    <div class="info-content">
+                        <h1 class="name" title="Waqas Khan">Waqas Khan</h1>
+                        <p class="title">Computational Geneticist</p>
+                    </div>
+
+                    <button class="info_more-btn" data-sidebar-btn>
+                        <span>Show Contacts</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <div class="sidebar-info_more">
+                    <div class="separator"></div>
+
+                    <ul class="contacts-list">
+                        <li class="contact-item">
+                            <div class="icon-box">
+                                <i data-lucide="mail" class="w-5 h-5 text-white"></i>
+                            </div>
+                            <div class="contact-info">
+                                <p class="contact-title">Email</p>
+                                <a href="mailto:waqaskhan600.wk@gmail.com" class="contact-link">waqaskhan600.wk@gmail.com</a>
+                            </div>
+                        </li>
+
+                        <li class="contact-item">
+                            <div class="icon-box">
+                                <i data-lucide="phone" class="w-5 h-5 text-white"></i>
+                            </div>
+                            <div class="contact-info">
+                                <p class="contact-title">Phone</p>
+                                <a href="tel:+923131933713" class="contact-link">(+92) 3131933713</a>
+                            </div>
+                        </li>
+
+                        <li class="contact-item">
+                            <div class="icon-box">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-white"></i>
+                            </div>
+                            <div class="contact-info">
+                                <p class="contact-title">Location</p>
+                                <address>Peshawar, Pakistan</address>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="separator"></div>
+
+                    <ul class="social-list">
+                        <li class="social-item">
+                            <a href="https://www.linkedin.com/in/waqas-khan-3b937b184/" target="_blank" class="social-link" aria-label="LinkedIn">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            </a>
+                        </li>
+                        <li class="social-item">
+                            <a href="https://github.com/Waqaskhan600/Machine Learning.git" target="_blank" class="social-link" aria-label="GitHub">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                            </a>
+                        </li>
+                        <!-- Add a placeholder for a third social link -->
+                        <li class="social-item">
+                            <a href="mailto:waqaskhan600.wk@gmail.com" class="social-link" aria-label="Email">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!--
+              - #MAIN CONTENT
+            -->
+            <div class="main-content">
+
+                <!--
+                  - #NAVBAR
+                -->
+                <nav class="navbar">
+                    <ul class="navbar-list">
+                        <li class="navbar-item">
+                            <button class="navbar-link active" data-nav-link data-page-name="about">About</button>
+                        </li>
+                        <li class="navbar-item">
+                            <button class="navbar-link" data-nav-link data-page-name="history">History</button>
+                        </li>
+                        <li class="navbar-item">
+                            <button class="navbar-link" data-nav-link data-page-name="projects">Projects</button>
+                        </li>
+                        <li class="navbar-item">
+                            <button class="navbar-link" data-nav-link data-page-name="utility">Utility</button>
+                        </li>
+                        <li class="navbar-item">
+                            <button class="navbar-link" data-nav-link data-page-name="contact">Contact</button>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!--
+                  - #ABOUT PAGE
+                -->
+                <article class="about active" data-page="about">
+                    <header>
+                        <h2 class="h2 article-title">About Me</h2>
+                    </header>
+
+                    <section class="about-text">
+                        <p>
+                            I am an MPhil scholar specializing in **Biotechnology and Genetic Engineering** from The University of Agriculture Peshawar. My research is focused on **Cancer Genetics**, particularly investigating polymorphisms associated with breast cancer using a blend of **wet-lab molecular techniques** and advanced **bioinformatics tools**.
+                        </p>
+                        <p>
+                            With practical experience as a **Research Officer** and proficiency in **Python, R-Studio, and Machine Learning**, I excel at transforming complex biological data into actionable insights for diagnostic and therapeutic advancements. I'm passionate about using computational power to solve critical problems in human health.
+                        </p>
+                    </section>
+
+                    <!--
+                      - services (Mapped from original reference)
+                    -->
+                    <section class="service">
+                        <h3 class="h3 service-title">What I Do</h3>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <li class="p-5 rounded-xl border border-gray-200 shadow-sm flex items-start space-x-4">
+                                <div class="w-10 h-10 bg-primary-color bg-opacity-10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="dna" class="w-5 h-5 text-primary-color"></i>
+                                </div>
+                                <div class="service-content-box">
+                                    <h4 class="h4">Molecular Genetics</h4>
+                                    <p class="text-sm text-gray-500">
+                                        Expertise in PCR, ARMS-PCR, DNA extraction, and genotyping for genetic studies.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="p-5 rounded-xl border border-gray-200 shadow-sm flex items-start space-x-4">
+                                <div class="w-10 h-10 bg-primary-color bg-opacity-10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="cpu" class="w-5 h-5 text-primary-color"></i>
+                                </div>
+                                <div class="service-content-box">
+                                    <h4 class="h4">Bioinformatics & AI</h4>
+                                    <p class="text-sm text-gray-500">
+                                        SNP analysis, variant filtration, NGS pipeline development, and Machine Learning for diagnostics.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="p-5 rounded-xl border border-gray-200 shadow-sm flex items-start space-x-4">
+                                <div class="w-10 h-10 bg-primary-color bg-opacity-10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="code" class="w-5 h-5 text-primary-color"></i>
+                                </div>
+                                <div class="service-content-box">
+                                    <h4 class="h4">Data Analysis</h4>
+                                    <p class="text-sm text-gray-500">
+                                        Proficiency in Python (Pandas, ML) and R-Studio for complex biological data processing.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="p-5 rounded-xl border border-gray-200 shadow-sm flex items-start space-x-4">
+                                <div class="w-10 h-10 bg-primary-color bg-opacity-10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="book-open-text" class="w-5 h-5 text-primary-color"></i>
+                                </div>
+                                <div class="service-content-box">
+                                    <h4 class="h4">Research & Writing</h4>
+                                    <p class="text-sm text-gray-500">
+                                        Experienced in systematic reviews, thesis writing, and synthesizing complex scientific findings.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <!--
+                      - Education Summary (Replacing Testimonials/Clients)
+                    -->
+                    <section class="py-5">
+                        <h3 class="h3 service-title">Academic Achievements</h3>
+                        <div class="space-y-3 p-4 border border-gray-200 rounded-lg">
+                            <p class="font-semibold text-gray-900">MPhil Biotechnology & Genetic Engineering</p>
+                            <p class="text-gray-600 text-sm">The University of Agriculture Peshawar (Grade: 3.66/4.00)</p>
+                            <p class="font-semibold text-gray-900">BSc (Hons) Biotechnology & Genetic Engineering</p>
+                            <p class="text-gray-600 text-sm">The University of Agriculture Peshawar (Grade: 3.74/4.00)</p>
+                        </div>
+                    </section>
+
+                </article>
+
+                <!--
+                  - #HISTORY (RESUME) PAGE
+                -->
+                <article class="resume" data-page="history">
+                    <header>
+                        <h2 class="h2 article-title">Professional History</h2>
+                    </header>
+
+                    <!-- Education Timeline -->
+                    <section class="timeline">
+                        <div class="title-wrapper">
+                            <div class="icon-box">
+                                <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="h3">Education</h3>
+                        </div>
+
+                        <ol class="timeline-list">
+                            <li class="timeline-item">
+                                <h4 class="h4 timeline-item-title">MPhil Biotechnology & Genetic Engineering</h4>
+                                <span>Sep 2022 — Jun 2025</span>
+                                <p class="timeline-text">
+                                    The University of Agriculture Peshawar. Thesis focused on investigating deleterious **EGFR polymorphisms** in breast cancer (computational and experimental study). Grade: 3.66/4.00.
+                                </p>
+                            </li>
+                            <li class="timeline-item">
+                                <h4 class="h4 timeline-item-title">BSc (Hons) Biotechnology & Genetic Engineering</h4>
+                                <span>Sep 2018 — Jul 2022</span>
+                                <p class="timeline-text">
+                                    The University of Agriculture Peshawar. Thesis: **microRNA-155** as a potential biomarker in early detection of breast cancer (meta-analysis). Grade: 3.74/4.00.
+                                </p>
+                            </li>
+                        </ol>
+                    </section>
+
+                    <!-- Experience Timeline -->
+                    <section class="timeline">
+                        <div class="title-wrapper">
+                            <div class="icon-box">
+                                <i data-lucide="briefcase" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="h3">Experience</h3>
+                        </div>
+
+                        <ol class="timeline-list">
+                            <li class="timeline-item">
+                                <h4 class="h4 timeline-item-title">Research Officer</h4>
+                                <span>Sep 2022 — Jan 2023</span>
+                                <p class="timeline-text">
+                                    **Center for Non-Communicable Diseases (CNCD)**. Responsibilities included educating patients about genetics, managing patient enrollment for genetic studies, and overseeing sample collection and management.
+                                </p>
+                            </li>
+                            <li class="timeline-item">
+                                <h4 class="h4 timeline-item-title">Internee</h4>
+                                <span>Jan 2022 — Jul 2022</span>
+                                <p class="timeline-text">
+                                    **The Agriculture University of Peshawar**. Performed fieldwork, data collection, nucleic acid extraction, PCR, gel electrophoresis, and NanoDrop quantification.
+                                </p>
+                            </li>
+                        </ol>
+                    </section>
+
+                </article>
+
+
+                <!--
+                  - #PROJECTS (PORTFOLIO) PAGE
+                -->
+                <article class="portfolio" data-page="projects">
+                    <header>
+                        <h2 class="h2 article-title">Key Projects & Publications</h2>
+                    </header>
+
+                    <section class="projects">
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            
+                            <!-- Project 1: ML Model -->
+                            <li class="project-item">
+                                <a href="https://github.com/Waqaskhan600/Machine Learning.git" target="_blank">
+                                    <figure class="project-img bg-gray-100 p-4">
+                                        <div class="project-item-icon-box">
+                                            <i data-lucide="code-square" class="w-6 h-6 text-primary-color"></i>
+                                        </div>
+                                        <h3 class="project-title mt-2">ML: Breast Cancer Diagnostic Model</h3>
+                                    </figure>
+                                    <p class="project-category">Machine Learning / Python</p>
+                                </a>
+                            </li>
+                            
+                            <!-- Project 2: MPhil Thesis -->
+                            <li class="project-item">
+                                <div class="cursor-default p-4 border border-gray-200 rounded-xl">
+                                    <figure class="project-img">
+                                        <div class="project-item-icon-box">
+                                            <i data-lucide="microscope" class="w-6 h-6 text-primary-color"></i>
+                                        </div>
+                                        <h3 class="project-title mt-2">MPhil Thesis: EGFR Polymorphisms in BC</h3>
+                                    </figure>
+                                    <p class="project-category">Cancer Genetics / Bioinformatics</p>
+                                    <p class="text-xs text-gray-500 mt-2">Computational and experimental investigation into risk polymorphisms.</p>
+                                </div>
+                            </li>
+
+                            <!-- Publication 1: RAD51 Meta-analysis -->
+                            <li class="project-item">
+                                <div class="cursor-default p-4 border border-gray-200 rounded-xl">
+                                    <figure class="project-img">
+                                        <div class="project-item-icon-box">
+                                            <i data-lucide="file-text" class="w-6 h-6 text-primary-color"></i>
+                                        </div>
+                                        <h3 class="project-title mt-2">RAD51 (rs1801320) Meta-analysis</h3>
+                                    </figure>
+                                    <p class="project-category">Publication: Discover Oncology (2025)</p>
+                                    <p class="text-xs text-gray-500 mt-2">Investigating the influence of RAD51 on breast cancer risk.</p>
+                                </div>
+                            </li>
+
+                            <!-- Publication 2: microRNA-155 Meta-analysis -->
+                            <li class="project-item">
+                                <div class="cursor-default p-4 border border-gray-200 rounded-xl">
+                                    <figure class="project-img">
+                                        <div class="project-item-icon-box">
+                                            <i data-lucide="file-text" class="w-6 h-6 text-primary-color"></i>
+                                        </div>
+                                        <h3 class="project-title mt-2">microRNA-155 as a Potential Biomarker</h3>
+                                    </figure>
+                                    <p class="project-category">Publication: Meta-analysis (2022)</p>
+                                    <p class="text-xs text-gray-500 mt-2">Analyzing microRNA-155 for early detection of breast cancer.</p>
+                                </div>
+                            </li>
+                            
+                        </ul>
+                    </section>
+                </article>
+
+
+                <!--
+                  - #UTILITY (LLM Feature - Replaces Blog)
+                -->
+                <article class="blog" data-page="utility">
+                    <header>
+                        <h2 class="h2 article-title">Bioinformatics Research Utility ✨</h2>
+                    </header>
+
+                    <section class="utility-box">
+                        <p class="text-md text-gray-600 mb-5">
+                            Leveraging computational power. Ask a technical question related to genetics, bioinformatics, or data science.
+                        </p>
+                        
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <input id="query-input" type="text" placeholder="E.g., Explain NGS pipeline development in genomics." class="flex-grow p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-color" />
+                            <button id="query-button" class="px-6 py-3 bg-primary-color text-white font-bold rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 flex items-center justify-center disabled:opacity-50" disabled>
+                                <span id="button-text">Get Insight</span>
+                                <i id="loading-spinner" data-lucide="loader" class="ml-2 w-5 h-5 animate-spin hidden"></i>
+                            </button>
+                        </div>
+
+                        <div id="result-area" class="utility-result mt-6 rounded-lg hidden">
+                            <h4 class="h4 mb-2 text-gray-900">Research Insight:</h4>
+                            <div id="gemini-response" class="text-gray-700 text-sm"></div>
+                            <div id="citation-links" class="mt-4 text-xs text-gray-500 border-t pt-2"></div>
+                        </div>
+                    </section>
+                </article>
+
+
+                <!--
+                  - #CONTACT PAGE
+                -->
+                <article class="contact" data-page="contact">
+                    <header>
+                        <h2 class="h2 article-title">Get In Touch</h2>
+                    </header>
+
+                    <!-- Mapbox (Fixed Location for Peshawar) -->
+                    <section class="mapbox mb-10">
+                        <figure>
+                            <iframe
+                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.784406120468!2d71.521873115458!3d34.00407102693899!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38d9172467d302a9%3A0xc665780d6f43e7c8!2sPeshawar%2C%20Khyber%20Pakhtunkhwa%2C%20Pakistan!5e0!3m2!1sen!2sus!4v1647608789441!5m2!1sen!2sbd"
+                              width="100%" height="300" loading="lazy" class="rounded-xl shadow-md border-0"></iframe>
+                          </figure>
+                    </section>
+
+                    <!-- Contact details list for easy mobile access -->
+                    <section class="contact-details">
+                        <h3 class="h3 form-title mb-4">Direct Contact</h3>
+
+                        <ul class="grid sm:grid-cols-2 gap-4">
+                            <li class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                                <h4 class="font-semibold text-primary-color">Email</h4>
+                                <a href="mailto:waqaskhan600.wk@gmail.com" class="text-sm text-gray-700 hover:underline">waqaskhan600.wk@gmail.com</a>
+                            </li>
+                            <li class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                                <h4 class="font-semibold text-primary-color">Phone</h4>
+                                <a href="tel:+923131933713" class="text-sm text-gray-700 hover:underline">(+92) 3131933713</a>
+                            </li>
+                            <li class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                                <h4 class="font-semibold text-primary-color">LinkedIn</h4>
+                                <a href="https://www.linkedin.com/in/waqas-khan-3b937b184/" target="_blank" class="text-sm text-gray-700 hover:underline">View Profile</a>
+                            </li>
+                             <li class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                                <h4 class="font-semibold text-primary-color">GitHub</h4>
+                                <a href="https://github.com/Waqaskhan600/Machine Learning.git" target="_blank" class="text-sm text-gray-700 hover:underline">View ML Repository</a>
+                            </li>
+                        </ul>
+                    </section>
+
+                </article>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!--
+      - custom js
+    -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Lucide Icons
+            lucide.createIcons();
+
+            // --- REPLICATED VCARD JAVASCRIPT LOGIC ---
+
+            // Sidebar toggle on mobile
+            const sidebar = document.querySelector("[data-sidebar]");
+            const sidebarBtn = document.querySelector("[data-sidebar-btn]");
+            const sidebarMore = document.querySelector(".sidebar-info_more");
+
+            if (sidebarBtn) {
+                sidebarBtn.addEventListener("click", function () {
+                    sidebar.classList.toggle("active");
+                    sidebarMore.style.display = sidebar.classList.contains("active") ? "block" : "none";
+                });
+            } else {
+                 // For desktop view, ensure info_more is visible by default (CSS handles initial state)
+                 if (window.innerWidth >= 1024) {
+                    sidebarMore.style.display = "block";
+                 }
+            }
+            
+            // Page navigation
+            const navigationLinks = document.querySelectorAll("[data-nav-link]");
+            const pages = document.querySelectorAll("[data-page]");
+
+            function showPage(pageName) {
+                // Deactivate all links and pages
+                navigationLinks.forEach(link => link.classList.remove('active'));
+                pages.forEach(page => page.classList.remove('active'));
+
+                // Find and activate the link
+                const activeLink = document.querySelector(`[data-page-name="${pageName}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+
+                // Find and activate the page
+                const activePage = document.querySelector(`[data-page="${pageName}"]`);
+                if (activePage) {
+                    activePage.classList.add('active');
+                    // Scroll to top of content area on desktop view
+                    if (window.innerWidth >= 1024) {
+                        const mainContent = document.querySelector('.main-content');
+                        if (mainContent) {
+                            mainContent.scrollTop = 0;
+                        }
+                    }
+                }
+            }
+
+            navigationLinks.forEach(link => {
+                link.addEventListener("click", function () {
+                    const pageName = this.getAttribute("data-page-name");
+                    showPage(pageName);
+                });
+            });
+
+            // --- LLM API INTEGRATION (UTILITY TAB) ---
+            const apiKey = ""; 
+            const model = 'gemini-2.5-flash-preview-09-2025';
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+
+            const queryInput = document.getElementById('query-input');
+            const queryButton = document.getElementById('query-button');
+            const buttonText = document.getElementById('button-text');
+            const loadingSpinner = document.getElementById('loading-spinner');
+            const resultArea = document.getElementById('result-area');
+            const geminiResponse = document.getElementById('gemini-response');
+            const citationLinks = document.getElementById('citation-links');
+
+            // Enable button only when input has content
+            queryInput.addEventListener('input', () => {
+                queryButton.disabled = queryInput.value.trim() === "";
+            });
+
+            queryButton.addEventListener('click', handleQuery);
+
+            /**
+             * Makes a grounded API call to the Gemini model with exponential backoff for retries.
+             */
+            async function geminiApiCall(userQuery, retryCount = 0) {
+                const systemPrompt = "You are a professional research assistant specializing in genetic engineering and bioinformatics. Provide a concise, highly accurate, and grounded explanation (1-2 paragraphs max) for the user's query. If the query is about a specific gene, polymorphism, or technique, focus on its biological significance and application.";
+                
+                const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    tools: [{ "google_search": {} }], 
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                };
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        if (response.status === 429 && retryCount < 3) {
+                            const delay = Math.pow(2, retryCount) * 1000;
+                            await new Promise(resolve => setTimeout(resolve, delay));
+                            return geminiApiCall(userQuery, retryCount + 1); 
+                        }
+                        throw new Error(`API call failed with status: ${response.status}`);
+                    }
+
+                    return response.json();
+
+                } catch (error) {
+                    console.error('Error during API call:', error);
+                    geminiResponse.innerHTML = '<p class="text-red-500">Could not connect to the research utility service. Check console for details.</p>';
+                    return null;
+                }
+            }
+
+            /**
+             * Handles the user query, calls the Gemini API, and updates the UI.
+             */
+            async function handleQuery() {
+                const query = queryInput.value.trim();
+                if (!query) return;
+
+                // UI: Set loading state
+                queryButton.disabled = true;
+                buttonText.textContent = 'Analyzing...';
+                loadingSpinner.classList.remove('hidden');
+                resultArea.classList.remove('hidden');
+                geminiResponse.innerHTML = '<p class="text-gray-500 animate-pulse">Fetching cutting-edge biological insights...</p>';
+                citationLinks.innerHTML = '';
+
+                try {
+                    const result = await geminiApiCall(query);
+                    if (!result) return; 
+
+                    const candidate = result.candidates?.[0];
+
+                    if (candidate && candidate.content?.parts?.[0]?.text) {
+                        const text = candidate.content.parts[0].text;
+                        let sources = [];
+
+                        const groundingMetadata = candidate.groundingMetadata;
+                        if (groundingMetadata && groundingMetadata.groundingAttributions) {
+                            sources = groundingMetadata.groundingAttributions
+                                .map(attribution => ({
+                                    uri: attribution.web?.uri,
+                                    title: attribution.web?.title,
+                                }))
+                                .filter(source => source.uri && source.title)
+                                .filter((source, index, self) => 
+                                    index === self.findIndex((t) => t.uri === source.uri)
+                                );
+                        }
+
+                        // Display generated text
+                        geminiResponse.innerHTML = `<p>${text.replace(/\n/g, '<br>')}</p>`;
+
+                        // Display citations
+                        if (sources.length > 0) {
+                            citationLinks.innerHTML = '<strong>Sources:</strong> ' + sources.map((s, i) => 
+                                `<a href="${s.uri}" target="_blank" class="text-primary-color hover:underline">${s.title || 'Source ' + (i + 1)}</a>`
+                            ).join(' | ');
+                        } else {
+                            citationLinks.innerHTML = '<em>No external sources cited for this response.</em>';
+                        }
+                        
+                    } else {
+                        geminiResponse.innerHTML = '<p class="text-red-500">Error: Could not retrieve a valid response. Please try a different query.</p>';
+                    }
+
+                } catch (error) {
+                    geminiResponse.innerHTML = `<p class="text-red-500">Error: ${error.message}</p>`;
+                    console.error(error);
+                } finally {
+                    // UI: Reset loading state
+                    queryButton.disabled = queryInput.value.trim() === "";
+                    buttonText.textContent = 'Get Insight';
+                    loadingSpinner.classList.add('hidden');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
